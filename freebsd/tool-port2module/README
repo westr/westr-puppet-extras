@@ -1,0 +1,10 @@
+
+Mkport.sh:	This is a simple script that takes 2 variables: portname + portorigin and
+		then creates a module for the port with the structure and a basic init.pp
+		file.  If the port is installed locally already, it'll source the options
+		file and any port pre-reqs.
+
+Mkport-all.sh:	Simple wrapper script that does all the currently installed ports on the
+		machine via the above script.  Good for adding a pre-existing non-puppet
+		controlled machine.
+

@@ -1,0 +1,26 @@
+
+This package provider is a full replacement for the default ones provided
+by the main puppet distribution for freebsd.
+
+Deployment is probably best done with the plugin sync feature of puppet.
+
+Prerequist is the portupgrade port needs to be installed.
+
+Assuming: MODULEDIR=/usr/local/etc/puppet/module
+
+1) Place file (portupgrade.rb) in $MODULEDIR/<custom>/lib/puppet/provider/package
+
+2) Make sure "pluginsync = true" is in your puppet.conf file
+
+3) Reference with provider => portupgrade and use the port origin as the name:
+
+eg:
+class bash {
+        package { "shells/bash":
+                provider => portupgrade,
+                alias   => "bash",
+                ensure  => latest,
+        }
+}
+
+
