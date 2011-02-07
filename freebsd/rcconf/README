@@ -28,6 +28,7 @@ rcfile = use a specific file, otherwise it'll update the key wherever it finds i
 class testconf {
 	rcconf { "test_enable":
 		provider => sysrc,
+		ensure   => installed,
 		value    => "YES",
 		rcfile   => "/etc/rc.conf.local",
 	}
@@ -35,5 +36,10 @@ class testconf {
 		provider => sysrc,
 		value    => "--help -flag -item",
 		rcfile   => "/etc/rc.conf",
+	}
+	rconcf { "test_remove":
+		provider => sysrc,
+		ensure   => :absent,
+		rcfile   => "/etc/rc.conf"
 	}
 }
