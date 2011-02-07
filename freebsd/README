@@ -1,0 +1,32 @@
+Root Dir: /freebsd
+
+Directory:
+
+portupgrade:	(puppet ticket #3793)
+	A rewrite of the freebsd package provider
+	to support the "portupgrade" package/port
+	manager that's popular on freebsd.  Note
+	that this provider actually compiles the
+	software on the client machine.  Uses the
+	port origin as the internal name.
+	
+
+tool-port2module:
+	A simple shell script to build a puppet modules
+	directory structure from currently installed
+	ports.
+
+fbsd:		(puppet ticket #5951)
+	A rewrite of the freebsd package provider
+	to support .tbz files (precompiled ports) using
+	the port origin as the internal name.
+
+rcconf:
+	A totally new type + providers for managing
+	freebsd rc.conf files.  "sysrc" provider uses the sysrc
+	script/application (http://druidbsd.sourceforge.net/)
+	"freebsd" provider is a very quick and dirty
+	version based off some puppet code I saw.
+
+	
+

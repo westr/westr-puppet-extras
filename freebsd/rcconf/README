@@ -1,0 +1,25 @@
+
+This new package/type provider is for managing Freebsd style
+rc.conf configuration files.
+
+Since it's a type, you're able to properly do dependencies/etc with it.
+
+How to use:
+
+1) Place file (type/rcconf.rb) in $MODULEDIR/<custom>/lib/puppet/type/rcconf.rb
+
+2) Place file (provider/rcconf.rb) in $MODULEDIR/<custom>/lib/puppet/provider/rcconf.rb
+
+3) Place files (provider/rcconf/*.rb) in $MODULEDIR/<custom>/lib/puppet/provider/rcconf/*.rb
+
+A) Make sure "pluginsync = true" is in your puppet.conf file
+
+Use as:
+
+class testconf {
+	rcconf { "conf_enable":
+		provider => sysrc,
+		value    => "YES",
+		rcfile   => "/etc/rc.conf.local",
+	}
+}
