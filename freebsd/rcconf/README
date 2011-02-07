@@ -1,8 +1,13 @@
 
-This new package/type provider is for managing Freebsd style
-rc.conf configuration files.
+This is a new "type" which is for specifically managing Freebsd style
+rc.conf configuration files. (key="value" style)
 
 Since it's a type, you're able to properly do dependencies/etc with it.
+
+The (included) first provider for the type is called "sysrc" which uses the app/script
+available at http://druidbsd.sourceforge.net/ - also the default one so you don't need to edit it.
+
+
 
 How to use:
 
@@ -12,14 +17,23 @@ How to use:
 
 3) Place files (provider/rcconf/*.rb) in $MODULEDIR/<custom>/lib/puppet/provider/rcconf/*.rb
 
-A) Make sure "pluginsync = true" is in your puppet.conf file
+4) Make sure "pluginsync = true" is in your puppet.conf file
+
+
 
 Use as:
+value  = whatever you want - set to :nil to force a blank value (ie: key="")
+rcfile = use a specific file, otherwise it'll update the key wherever it finds it.
 
 class testconf {
-	rcconf { "conf_enable":
+	rcconf { "test_enable":
 		provider => sysrc,
 		value    => "YES",
 		rcfile   => "/etc/rc.conf.local",
+	}
+	rcconf { "test_flags":
+		provider => sysrc,
+		value    => "--help -flag -item",
+		rcfile   => "/etc/rc.conf",
 	}
 }
